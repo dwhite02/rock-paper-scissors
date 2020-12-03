@@ -25,6 +25,7 @@
         top:0;
         box-shadow: 0 8px 10px rgba(113,0,0,.5);
         transition: top .3s, box-shadow .35s;
+        display: block;
 
         &:hover {
             top: 4px;
