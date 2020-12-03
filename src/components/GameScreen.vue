@@ -28,9 +28,6 @@
         transition: top .3s, box-shadow .35s;
         z-index: 10;
         
-        
-        
-
         &:hover {
             top: 4px;
             box-shadow: 0 3px 8px;
