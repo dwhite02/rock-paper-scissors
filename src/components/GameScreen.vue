@@ -4,7 +4,7 @@
             <img class="rps-logo h-20 sm:h-48 lg:h-64 mx-auto" src="/images/title.png"/>
         </div>
         <div> 
-            <button v-on:click="$emit('begin')" class="rps-button mx-auto"> Start Game </button>
+            <button v-on:click="$emit('begin')" class="overflow-hidden rps-button mx-auto"> Start Game </button>
         </div>
     </div>
 </template>
@@ -25,8 +25,6 @@
         top:0;
         box-shadow: 0 8px 10px rgba(113,0,0,.5);
         transition: top .3s, box-shadow .35s;
-        overflow: hidden !important;
-        -webkit-overflow: hidden;
 
         &:hover {
             top: 4px;
