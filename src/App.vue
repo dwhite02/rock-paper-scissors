@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import GameScreen from './components/GameScreen.vue'
 import GamePlay from './components/GamePlay.vue'
 
@@ -19,7 +18,7 @@ export default {
     }
   },
   components: {
-    HelloWorld, GameScreen, GamePlay
+    GameScreen, GamePlay
   },
   methods: {
     startGame: function () {
