@@ -35,7 +35,9 @@ export default {
 
 @font-face {
     font-family: "American Captain";
-    src: url("/assets/fonts/American Captain.ttf");
+    src:url('/fonts/American Captain.woff2') format('woff2'),
+        url('/fonts/American Captain.woff') format('woff'),
+        url('/fonts/American Captain.ttf') format('truetype');
 }
 
 
