@@ -15,7 +15,7 @@
     .rps-button {
         background-color: #FFE606;
         border-radius: 30px;
-        color: #6C2B06;
+        color: #fff;
         padding: 10px 40px;
         font-size: 40px;
         font-weight: 700;
