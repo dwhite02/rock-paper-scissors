@@ -25,7 +25,7 @@ export default {
         GameScreen, GamePlay
     },
     methods: {
-        startGame: function (game) {
+        startGame: function (game, err) {
         console.log(game)
 
         if (game !== '') {
@@ -38,7 +38,8 @@ export default {
                 }
                     this.gameState = true;
             } else {
-                console.log('No game mode selected')
+                
+                err()
             }
         }
     }

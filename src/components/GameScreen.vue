@@ -9,7 +9,10 @@
             <button v-on:click="selectMode" class="rps-button-game" type="button">Round of 5</button>
         </div>
         <div> 
-            <button type="button" v-on:click="$emit('begin',gameMode)" class="rps-button mx-auto"> Start Game </button>
+            <button type="button" v-on:click="$emit('begin',gameMode, errMessage)" class="rps-button mx-auto"> Start Game </button>
+        </div>
+        <div v-if="errorActive" class="rps-error w-100 md:w-1/2 lg:w-1/3 xl:w-1/4"> 
+            <p> Please Select a Game Mode </p>
         </div>
     </div>
 </template>
@@ -18,7 +21,8 @@
 export default {
     data () {
         return {
-            gameMode: ''
+            gameMode: '',
+            errorActive: false
         }
     },
     methods: {
@@ -30,13 +34,27 @@ export default {
             event.target.classList.add('active')
 
             this.gameMode = event.target.textContent;
+
+            if (this.errorActive) {
+                this.errorActive = false;
+            }
             console.log(this.gameMode)
+        },
+        errMessage: function() {
+            this.errorActive = true;
         }
+
     }
 }
 </script>
 
 <style scoped lang="scss">
+
+    @keyframes appear {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+    }
+
     .active {
         background-color: white;
         color: #6C2B06 !important;
@@ -111,6 +129,21 @@ export default {
         margin-top: 5%;
     }
 
+    .rps-error {
+        margin: 2% auto;
+        animation: appear .3s forwards linear;
+    
+        p {
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            background-color: #F72A2A;
+            padding: 10px 20px;
+            box-shadow: 0 5px 10px rgba(0,0,0,.65);
+        }
+    }
+
     .screen {
         background: linear-gradient(135deg, rgba(255,51,173,1) 0%, rgba(225,134,14,1) 100%);
         padding: 40px;
@@ -120,12 +153,16 @@ export default {
     }
 
     @media (max-width: 392px) {
+        .rps-button {
+            font-size: 5vw;
+        }
+
         .rps-button-group {
             display: flex;
             flex-direction: column;
 
             .rps-button-game {
-                font-size: 2vw;
+                font-size: 5vw;
 
                 &:nth-child(1) {
                     border-radius:10px 10px 0 0 ;
@@ -140,6 +177,10 @@ export default {
                 }
             }
 
+        }
+
+        .rps-error {
+            margin-top: 5%;
         }
     }
 

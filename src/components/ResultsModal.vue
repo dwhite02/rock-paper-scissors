@@ -32,6 +32,7 @@ export default {
             margin: 15% 2% 0 2%;
             font-weight: bold;
             transition: all .2s;
+            text-align: center;
 
 
             &:hover {
@@ -55,6 +56,7 @@ export default {
             color: #F3CA3E;
             text-shadow: -4px 5px rgba(0,0,0,.86) ;
             margin-bottom: 5%;
+            text-align: center;
         }
     }
 
