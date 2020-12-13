@@ -1,27 +1,57 @@
 <template>
     <div class="screen">
         <div> 
-            <img class="rps-logo h-20 sm:h-48 lg:h-64 mx-auto" src="/images/title.png"/>
+            <img class="rps-logo h-18 sm:h-40 lg:h-48 mx-auto" src="/images/title.png"/>
+        </div>
+        <div class="rps-button-group mx-auto"> 
+            <button v-on:click="selectMode" class="rps-button-game" type="button">Free-Play</button>
+            <button v-on:click="selectMode" class="rps-button-game" type="button">Round of 3</button>
+            <button v-on:click="selectMode" class="rps-button-game" type="button">Round of 5</button>
         </div>
         <div> 
-            <button v-on:click="$emit('begin')" class="rps-button mx-auto"> Start Game </button>
+            <button type="button" v-on:click="$emit('begin',gameMode)" class="rps-button mx-auto"> Start Game </button>
         </div>
     </div>
 </template>
 
+<script>
+export default {
+    data () {
+        return {
+            gameMode: ''
+        }
+    },
+    methods: {
+        selectMode: function (event) {
+            let buttons = document.querySelectorAll('.rps-button-group button')
+            for (const button of buttons) {
+                button.classList.remove('active')
+            }
+            event.target.classList.add('active')
 
+            this.gameMode = event.target.textContent;
+            console.log(this.gameMode)
+        }
+    }
+}
+</script>
 
 <style scoped lang="scss">
+    .active {
+        background-color: white;
+        color: #6C2B06 !important;
+    }
+
     .rps-button {
         background-color: #FFE606;
         overflow: hidden;
         border-radius: 30px;
         color: #6C2B06;
         padding: 10px 40px;
-        font-size: 40px;
+        font-size: 2.2vw;
         font-weight: 700;
         display: block;
-        margin-top: 12%;
+        margin-top: 8%;
         position: relative;
         top:0;
         box-shadow: 0 8px 10px rgba(113,0,0,.5);
@@ -52,7 +82,34 @@
         }
     }
 
-    
+    .rps-button-game {
+        border: 2px solid #fff;
+        color: white;
+        padding: 7px 45px;
+        font-size: 1.5vw;
+        letter-spacing: 1px;
+        transition: all .3s;
+        font-weight: 500;
+
+        &:hover {
+            background-color: white;
+            color: #6C2B06;
+        }
+
+        &:nth-child(1) {
+            border-radius: 10px 0 0 10px;
+            border-right: 0;
+        }
+
+        &:nth-child(3) {
+            border-radius: 0 10px 10px 0;
+            border-left: 0;
+        }
+    }
+
+    .rps-button-group {
+        margin-top: 5%;
+    }
 
     .screen {
         background: linear-gradient(135deg, rgba(255,51,173,1) 0%, rgba(225,134,14,1) 100%);
@@ -60,6 +117,30 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+    }
+
+    @media (max-width: 392px) {
+        .rps-button-group {
+            display: flex;
+            flex-direction: column;
+
+            .rps-button-game {
+                font-size: 2vw;
+
+                &:nth-child(1) {
+                    border-radius:10px 10px 0 0 ;
+                    border-bottom: 0;
+                    border-right: 2px solid white !important;
+                }
+
+                &:nth-child(3) {
+                    border-radius: 0 0 10px 10px ;
+                    border-top: 0;
+                    border-left: 2px solid white!important;
+                }
+            }
+
+        }
     }
 
 </style>
